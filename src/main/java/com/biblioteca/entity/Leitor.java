@@ -18,23 +18,20 @@ public class Leitor {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(nullable = false, unique = true, length = 125)
     private String email;
 
     @Column(length = 20)
     private String telefone;
 
-    @Column(nullable = false, length = 20)
-    private String categoria;
+    public Leitor() {
+    }
 
-    public Leitor() {}
-
-    public Leitor(Long id, String nome, String email, String telefone, String categoria) {
+    public Leitor(Long id, String nome, String email, String telefone) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
-        this.categoria = categoria;
     }
 
     public Long getId() {
@@ -68,13 +65,5 @@ public class Leitor {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-    
 }
+    

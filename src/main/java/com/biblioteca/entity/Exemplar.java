@@ -1,23 +1,24 @@
 package com.biblioteca.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "exemplar")
 public class Exemplar {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(nullable = false, unique = true, length = 50)
-    private String codigoBarras;
-
-    @Column(nullable = false, length = 20)
-    private String status = "Disponível";
+    @Column(nullable = false, unique = true)
+    private String tombo;
 
     @ManyToOne 
     @JoinColumn(name = "livro_id", nullable = false)
@@ -26,10 +27,9 @@ public class Exemplar {
     public Exemplar() {
     }
 
-    public Exemplar(Long id, String codigoBarras, String status, Livro livro) {
+    public Exemplar(Long id, String tombo, Livro livro) {
         this.id = id;
-        this.codigoBarras = codigoBarras;
-        this.status = status;
+        this.tombo = tombo;
         this.livro = livro;
     }
 
@@ -41,20 +41,12 @@ public class Exemplar {
         this.id = id;
     }
 
-    public String getCodigoBarras() {
-        return codigoBarras;
+    public String getTombo() {
+        return tombo;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTombo(String tombo) {
+        this.tombo = tombo;
     }
 
     public Livro getLivro() {

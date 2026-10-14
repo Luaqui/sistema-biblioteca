@@ -1,14 +1,20 @@
 package com.biblioteca.entity;
 
 import java.time.LocalDate;
-
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "emprestimo")
 public class Emprestimo {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -21,6 +27,7 @@ public class Emprestimo {
     @Column(nullable = false, length = 20)
     private String status ="Ativo";
 
+    @ManyToOne
     @JoinColumn(name = "leitor_id", nullable = false)
     private Leitor leitor;
 

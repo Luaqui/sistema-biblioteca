@@ -1,10 +1,14 @@
 package com.biblioteca.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "livro")
 public class Livro {
     
     @Id 
@@ -20,14 +24,18 @@ public class Livro {
     @Column(length = 50)
     private String editora;
 
+    @Column( nullable = false, unique = true)
+    private String isbn;
+
     public Livro() {
     }
 
-    public Livro(Long id, String titulo, String autor, String editora) {
+    public Livro(Long id, String titulo, String autor, String editora, String isbn) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
+        this.isbn = isbn;
     }
 
     public Long getId() {
@@ -60,5 +68,13 @@ public class Livro {
 
     public void setEditora(String editora) {
         this.editora = editora;
-    }  
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 }
