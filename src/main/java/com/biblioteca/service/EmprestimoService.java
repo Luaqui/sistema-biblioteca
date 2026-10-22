@@ -46,7 +46,6 @@ public class EmprestimoService {
         return EmprestimoMapper.toDTO(emprestimo);
     }
 
-    // Deletar um empréstimo
     public void deletar(Long id) {
         if (!emprestimoRepository.existsById(id)) {
             throw new RuntimeException("Não foi possível excluir. Empréstimo não encontrado com o ID: " + id);
