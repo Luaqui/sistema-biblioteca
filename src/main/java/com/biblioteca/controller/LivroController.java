@@ -18,6 +18,7 @@ public class LivroController {
     private LivroService livroService;
 
     @GetMapping
+    @PutMapping("/{id}")
     public ResponseEntity<List<LivroDTO>> listarTodos() {
         List<LivroDTO> livros = livroService.listarTodos();
         return ResponseEntity.ok(livros);

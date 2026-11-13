@@ -11,12 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/leitores")
+@CrossOrigin(origins = "*")
 public class LeitorController {
 
     @Autowired
     private LeitorService leitorService;
 
     @GetMapping
+    @PutMapping("/{id}")
     public ResponseEntity<List<LeitorDTO>> listarTodos() {
         List<LeitorDTO> leitores = leitorService.listarTodos();
         return ResponseEntity.ok(leitores);

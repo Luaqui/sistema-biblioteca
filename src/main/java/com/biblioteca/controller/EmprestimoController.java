@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/emprestimos")
+@CrossOrigin(origins = "*")
 public class EmprestimoController {
 
     @Autowired

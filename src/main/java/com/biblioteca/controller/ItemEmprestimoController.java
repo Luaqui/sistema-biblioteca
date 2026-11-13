@@ -11,12 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/itens-emprestimo")
+@CrossOrigin(origins = "*")
 public class ItemEmprestimoController {
 
     @Autowired
     private ItemEmprestimoService itemEmprestimoService;
 
     @GetMapping
+    @PutMapping("/{id}")
     public ResponseEntity<List<ItemEmprestimoDTO>> listarTodos() {
         List<ItemEmprestimoDTO> itens = itemEmprestimoService.listarTodos();
         return ResponseEntity.ok(itens);
