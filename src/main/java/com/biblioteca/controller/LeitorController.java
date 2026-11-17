@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/leitores")
 public class LeitorController {
 
@@ -32,6 +33,12 @@ public class LeitorController {
     public ResponseEntity<LeitorDTO> salvar(@RequestBody LeitorDTO leitorDTO) {
         LeitorDTO novoLeitor = leitorService.salvar(leitorDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoLeitor);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<LeitorDTO> atualizar(@PathVariable Long id, @RequestBody LeitorDTO leitorDTO) {
+        LeitorDTO leitorAtualizado = leitorService.atualizar(id, leitorDTO);
+        return ResponseEntity.ok(leitorAtualizado);
     }
 
     @DeleteMapping("/{id}")
